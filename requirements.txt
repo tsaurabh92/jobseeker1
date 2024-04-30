@@ -1,10 +1,7 @@
 pandas 
 numpy 
 docx2txt
-pip install https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.1/en_core_web_sm-2.3.1.tar.gz
-# en_core_web_sm
+en_core_web_sm
 pyresparser
 mysql.connector
-# pip install https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.1/en_core_web_sm-2.3.1.tar.gz
-python-docx2
 docx
