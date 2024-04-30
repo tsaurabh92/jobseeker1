@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data[0]-wow-delay="0.1s">
+        <a href="#" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+          <h1 class="m-0"><i><img src="/static/img/icon.png"></i>Job Seeker Panel</h1>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data[0]-bs-toggle="collapse" data[0]-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="{{url_for('signin1home')}}" class="nav-item nav-link">Home</a>
+                <a href="{{url_for('upload')}}" class="nav-item nav-link">Upload Resume</a>
+                <a href="{{url_for('search')}}" class="nav-item nav-link">Search job</a>
+                <a href="{{url_for('appliedjobs')}}" class="nav-item nav-link">Applied Jobs</a>
+                <a href="{{url_for('topredictpage')}}" class="nav-item nav-link">Prediction</a>
+                <a href="{{url_for('load')}}" class="nav-item nav-link">Load</a>
+                <a href="{{url_for('j_account')}}" class="nav-item nav-link active">Account</a>
+                <a href="{{url_for('index')}}" class="nav-item nav-link">LogOut</a>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+
+    <center> 
+      <h1 style="margin-top: 50px;">
+        Account Details
+      </h1>
+    </center>
+
+        {% if data %}
+          <div style="margin-top: 30px; margin-left: 520px;" class="container">
+            <img style="height: 200px; width: 300px;" src="{{data[0][10]}}" alt="This image is not supported by your browser!" /><br><br>
+            <h4>Name : {{data[0][1]}}</h4><br>
+            <h4>Email : {{data[0][2]}}</h4><br>
+            <h4>Password : {{data[0][3]}}</h4><br>
+            <h4>Mobile Number :{{data[0][4]}}</h4><br>
+            <h4>Gender :{{data[0][5]}}</h4><br>
+            <h4>Age : {{data[0][6]}}</h4><br>
+            <h4>Address :{{data[0][7]}}</h4><br>
+            <h4>State:{{data[0][8]}}</h4><br>
+            <h4>District: {{data[0][9]}}</h4><br>
+          </div>
+        {% endif %}
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'index.html' %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn">
+        <a href="#" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+          <h1 class="m-0"><i><img src="/static/img/icon.png"></i>Employee Panel</h1>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="{{url_for('emphome')}}" class="nav-item nav-link">Home</a>
+                <a href="{{url_for('add_job')}}" class="nav-item nav-link">Add Job</a>
+                <a href="{{url_for('remove_data')}}" class="nav-item nav-link active">Job Info Remove</a>
+                <a href="{{url_for('view_applied_jobs')}}" class="nav-item nav-link">Job Seeker's Info</a>
+                <a href="{{url_for('e_account')}}" class="nav-item nav-link">Account</a>
+                <a href="{{url_for('index')}}" class="nav-item nav-link">LogOut</a>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+
+  <center style="width:1300px; margin-top: 50px;">
+    <h1>Job's Information</h1>
+  </center>
+
+  <center>
+    {% if row_val %}
+      <table style="margin-top: 50px; background-color: white;" class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col"><center>S.No</center></th>
+          <th scope="col"><center>Email</center></th>
+          <th scope="col"><center>Company Name</center></th>
+          <th scope="col"><center>Job Role</center></th>
+          <th scope="col"><center>Job Discription</center></th>
+          <th scope="col"><center>Salary</center></th>
+          <th scope="col"><center>Experience</center></th>
+          <th scope="col"><center>Skill</center></th>
+          <th scope="col"><center>Qualification</center></th>
+          <th scope="col"><center>Notification</center></th>
+          <th scope="col"><center>Location</center></th>
+          <th scope="col"><center>Mobile</center></th>
+          <th scope="col"><center>Company Email</center></th>
+          <th scope="col"><center>Action</center></th>
+        </tr>
+        </thead>
+        <tbody>
+          {% for r in row_val %}
+            <tr>
+              {% for v in r %}
+                <td>
+                {{v}}
+                {% if r.index(v)==12 %}
+                  <td>
+                    <center>
+                      <a href="{{ url_for('cancel',s=r[0])}}"  method="post" class="btn btn-danger">Remove</a>
+                    </center> 
+                  </td>
+                {% endif %}
+              {% endfor %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% endif %}
+  </center>
+
+
+{% endblock %}

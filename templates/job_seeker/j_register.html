@@ -1,0 +1,207 @@
+{% extends 'index.html' %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn">
+        <a href="#" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h1 class="m-0"><i><img src="/static/img/icon.png"></i>Job Seeker Panel</h1>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="{{url_for('index')}}" class="nav-item nav-link">Home</a>
+                <a href="{{url_for('j_register')}}" class="nav-item nav-link active">Register</a>
+                <a href="{{url_for('j_login')}}" class="nav-item nav-link">LogIn</a>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <center>
+        <h2 style="margin-top: 50px;">Registration</h2>
+        <div style="margin-top: 30px;" class="container col-md-8">
+            <form action="{{url_for('j_register')}}" method="post" enctype="multipart/form-data">
+                <div class="row g-3">
+
+                    <center>
+                        <div class="col-md-8">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+                                <label for="name">Name</label>
+                            </div>
+                        </div>
+                    </center>
+
+                    <center>
+                        <div class="col-md-8">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                                <label for="email">Email</label>
+                            </div>
+                        </div>
+                    </center>
+
+                    <center>
+                        <div class="col-md-8">
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                                <label for="password">Password</label>
+                            </div>
+                        </div>
+                    </center>
+
+                    <center>
+                        <div class="col-md-8">
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="password" name="c_password" placeholder="Conform Password" required>
+                                <label for="password">Conform Password</label>
+                            </div>
+                        </div>
+                    </center>
+
+                    <!-- <center>
+                        <div class="col-md-8">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="company" name="company" placeholder="Company Name" required>
+                                <label for="company">Company Name</label>
+                            </div>
+                        </div>
+                    </center> -->
+
+                    <!-- <center>
+                        <div class="col-md-8">
+                            <div class="form-floating">
+                                <input type="job" class="form-control" id="job" name="job" placeholder="Job Roll" required>
+                                <label for="job">Job Roll</label>
+                            </div>
+                        </div>
+                    </center> -->
+
+                    <center>
+                        <div class="col-md-8">
+                            <div class="form-floating">
+                                <input type="number" class="form-control" id="mobile" name="mobile" placeholder="Mobile" required>
+                                <label for="mobile">Mobile</label>
+                            </div>
+                        </div>
+                    </center>
+
+                    <center>
+                        <div class="col-md-8">
+                            <div class="form-floating">
+                                <textarea style="height: 100px" class="form-control" placeholder="Address" id="address" name="address" required></textarea>
+                                <label for="address">Address</label>
+                            </div>
+                        </div>
+                    </center>
+
+                    <center>
+                        <div class="col-md-8">
+                            <div class="form-floating">
+                                <select class="form-control" name="gender" required>
+                                    <option hidden>Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </center>
+
+                    <center>
+                        <div class="col-md-8">
+                            <div class="form-floating">
+                                <input type="number" class="form-control" id="age" name="age" placeholder="Age" required>
+                                <label for="age">Age</label>
+                            </div>
+                        </div>
+                    </center>
+
+                    <center>
+                        <div class="col-md-8">
+                            <div class="form-floating">
+                                <select class="form-control" name="state" required>
+                                    <option hidden>Select State</option>
+                                    <option value="Andra Pradesh">Andra Pradesh</option>
+                                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                    <option value="Assam">Assam</option>
+                                    <option value="Bihar">Bihar</option>
+                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                    <option value="Goa">Goa</option>
+                                    <option value="Gujarat">Gujarat</option>
+                                    <option value="Haryana">Haryana</option>
+                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                    <option value="Jharkhand">Jharkhand</option>
+                                    <option value="Karnataka">Karnataka</option>
+                                    <option value="Kerala">Kerala</option>
+                                    <option value="Madya Pradesh">Madya Pradesh</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Manipur">Manipur</option>
+                                    <option value="Meghalaya">Meghalaya</option>
+                                    <option value="Mizoram">Mizoram</option>
+                                    <option value="Nagaland">Nagaland</option>
+                                    <option value="Orissa">Orissa</option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Rajasthan">Rajasthan</option>
+                                    <option value="Sikkim">Sikkim</option>
+                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                    <option value="Telangana">Telangana</option>
+                                    <option value="Tripura">Tripura</option>
+                                    <option value="Uttaranchal">Uttaranchal</option>
+                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                    <option value="West Bengal">West Bengal</option>
+                                    <option disabled style="background-color:#aaa; color:#fff">UNION Territories</option>
+                                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                    <option value="Chandigarh">Chandigarh</option>
+                                    <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                                    <option value="Daman and Diu">Daman and Diu</option>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="Lakshadeep">Lakshadeep</option>
+                                    <option value="Pondicherry">Pondicherry</option>
+                              </select>
+                            </div>
+                        </div>
+                    </center>
+
+                    <center>
+                        <div class="col-md-8">
+                            <div class="form-floating">
+                                <select class="form-control" name="district" required>
+                                    <option hidden>Select District</option>
+                              </select>
+                            </div>
+                        </div>
+                    </center>
+
+                    <center>
+                        <div class="col-md-8">
+                            <div class="form-floating">
+                                <input type="file" class="form-control" id="image" name="image" placeholder="Photo" required>
+                                <label for="image">Photo</label>
+                            </div>
+                        </div>
+                    </center>
+
+                    <center>
+                        <div class="col-md-8">
+                            <div class="form-floating">
+                                <input type="file" class="form-control" id="resume" name="resume" placeholder="Resume" required>
+                                <label for="resume">Resume</label>
+                            </div>
+                        </div>
+                    </center>
+
+                    <center>
+                        <div class="col-8">
+                            <button class="btn btn-primary w-100 py-3" type="submit">Register</button>
+                        </div>
+                    </center>
+                    
+                </div>
+            </form><br><br>
+        </div>
+    </center>
+{% endblock %}

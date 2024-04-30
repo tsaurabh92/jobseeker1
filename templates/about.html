@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn">
+        <a href="#" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h1 class="m-0"><i><img src="/static/img/icon.png"></i>Job Slight</h1>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="{{url_for('index')}}" class="nav-item nav-link">Home</a>
+                <a href="{{url_for('about')}}" class="nav-item nav-link active">About</a>
+                <a href="{{url_for('signup1')}}" class="nav-item nav-link">Employee</a>
+                <a href="{{url_for('signup')}}" class="nav-item nav-link">Job Seeker</a>
+                <a href="{{url_for('signinback2')}}" class="nav-item nav-link">Admin</a>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeIn">
+                    <div class="d-flex flex-column">
+                        <img class="img-fluid rounded w-75 align-self-end" src="/static/img/about-1.jpg" alt="">
+                        <img class="img-fluid rounded w-50 bg-white pt-3 pe-3" src="/static/img/about-2.jpg" alt="" style="margin-top: -25%;">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <p style="color: white;" class="d-inline-block border rounded-pill py-1 px-4"><b>About Us</b></p>
+                    <p style="color: white;"><b>In today's rapidly evolving job market, finding the right job that matches an individual's skills, preferences, and career aspirations can be daunting. Our project introduces a state-of-the-art online job recommendation website designed to revolutionize the job search process. Leveraging advanced algorithms and machine learning techniques, our platform offers personalized job recommendations to users, thus significantly enhancing job matching efficiency and user satisfaction. By analyzing vast amounts of job data and user profiles, the website identifies patterns and preferences, aligning job seekers with the most suitable opportunities. Additionally, our platform incorporates user feedback mechanisms to continuously improve recommendation accuracy and relevance. This innovative approach not only streamlines the job search process but also supports employers in discovering ideal candidates, fostering a more dynamic and interconnected job market. Our project demonstrates the potential of technology to empower individuals in their career journeys, making job searching a more targeted, efficient, and rewarding experience.</b></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

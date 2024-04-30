@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn">
+        <a href="#" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h1 class="m-0"><i><img src="/static/img/icon.png"></i>Admin Panel</h1>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="{{url_for('adminhome')}}" class="nav-item nav-link active">Home</a>
+                <a href="{{url_for('view_job_seekers')}}" class="nav-item nav-link">Registrations</a>
+                <a href="{{url_for('viewjobnotifivation')}}" class="nav-item nav-link">Job Notifications</a>
+                <a href="{{url_for('index')}}" class="nav-item nav-link">LogOut</a>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid header bg-info p-0 mb-5">
+        <div class="row g-0 align-items-center flex-column-reverse flex-lg-row">
+            <div class="col-lg-6 p-5 wow fadeIn">
+                <h1 class="display-4 text-white mb-5">Welcome Admin!</h1>
+            </div>
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                <div class="owl-carousel header-carousel">
+                    <div class="owl-carousel-item position-relative">
+                        <img style="height: 570px;" class="img-fluid" src="/static/img/carousel-1.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+{% endblock %}
+        

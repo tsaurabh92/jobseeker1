@@ -1,0 +1,59 @@
+{% extends 'index.html' %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn">
+        <a href="#" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h1 class="m-0"><i><img src="/static/img/icon.png"></i>Admin Panel</h1>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="{{url_for('adminhome')}}" class="nav-item nav-link">Home</a>
+                <a href="{{url_for('view_job_seekers')}}" class="nav-item nav-link">Registrations</a>
+                <a href="{{url_for('viewjobnotifivation')}}" class="nav-item nav-link active">Job Notifications</a>
+                <a href="{{url_for('index')}}" class="nav-item nav-link">LogOut</a>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <center>
+      <center style="width:1300px; margin-top: 50px;">
+        <h1>Job's Information</h1>
+      </center>
+
+        {% if row_val %}
+            <table style="margin-top: 50px; background-color: white;" class="table table-striped">
+                <thead class="thead-dark">
+                    <th scope="col"><center>email</center></th>
+                    <th scope="col"><center>Company Name</center></th>
+                    <th scope="col"><center>Job Role</center></th>
+                    <th scope="col"><center>Job Discription</center></th>
+                    <th scope="col"><center>Salary</center></th>
+                    <th scope="col"><center>Experience</center></th>
+                    <th scope="col"><center>Skill</center></th>
+                    <th scope="col"><center>Qualification</center></th>
+                    <th scope="col"><center>Notification</center></th>
+                    <th scope="col"><center>Location</center></th>
+                    <th scope="col"><center>Mobile</center></th>
+                    <th scope="col"><center>Company Email</center></th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for row in row_val %}
+                    <tr>
+                        {% for cell in row %}
+                        <td><center>{{ cell }}</center></td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </center>
+{% endblock %}
+
+   

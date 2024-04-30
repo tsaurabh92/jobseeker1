@@ -1,0 +1,61 @@
+{% extends 'index.html' %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn">
+        <a href="#" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h1 class="m-0"><i><img src="/static/img/icon.png"></i>Admin Panel</h1>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="{{url_for('adminhome')}}" class="nav-item nav-link">Home</a>
+                <a href="{{url_for('view_job_seekers')}}" class="nav-item nav-link active">Registrations</a>
+                <a href="{{url_for('viewjobnotifivation')}}" class="nav-item nav-link">Job Notifications</a>
+                <a href="{{url_for('index')}}" class="nav-item nav-link">LogOut</a>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <center>
+        <center style="width:1300px; margin-top: 50px;">
+            <h1>Job Seeker's Registration Info</h1>
+        </center>
+
+        {% if data %}
+            <table style="margin-top: 50px; background-color: white;" class="table table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col"><center>Name</center></th>
+                    <th scope="col"><center>Email</center></th>
+                    <th scope="col"><center>Mobile</center></th>
+                    <th scope="col"><center>Gender</center></th>
+                    <th scope="col"><center>Age</center></th>
+                    <th scope="col"><center>Address</center></th>
+                    <th scope="col"><center>State</center></th>
+                    <th scope="col"><center>District</center></th>
+                    <th scope="col"><center>Photo</center></th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for id,name,email,password,phone,gender,age,adress,state,dist,photo,resume in data %}
+                        <tr>
+                            <td><center>{{name}}</center></td>
+                            <td><center>{{email}}</center></td>
+                            <td><center>{{phone}}</center></td>
+                            <td><center>{{gender}}</center></td>
+                            <td><center>{{age}}</center></td>
+                            <td><center>{{adress}}</center></td>
+                            <td><center>{{state}}</center></td>
+                            <td><center>{{dist}}</center></td>
+                            <td><center><img style="height: 100px; width: 100px;" src="/{{photo}}"/></center></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </center>
+{% endblock %}

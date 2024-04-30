@@ -1,0 +1,66 @@
+{% extends 'index.html' %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn">
+        <a href="#" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h1 class="m-0"><i><img src="/static/img/icon.png"></i>Job Seeker Panel</h1>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="{{url_for('signin1home')}}" class="nav-item nav-link">Home</a>
+                <a href="{{url_for('upload')}}" class="nav-item nav-link">Upload Resume</a>
+                <a href="{{url_for('search')}}" class="nav-item nav-link">Search job</a>
+                <a href="{{url_for('appliedjobs')}}" class="nav-item nav-link">Applied Jobs</a>
+                <a href="{{url_for('topredictpage')}}" class="nav-item nav-link">Prediction</a>
+                <a href="{{url_for('load')}}" class="nav-item nav-link active">Load</a>
+                <a href="{{url_for('j_account')}}" class="nav-item nav-link">Account</a>
+                <a href="{{url_for('index')}}" class="nav-item nav-link">LogOut</a>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+
+    <center>
+        <h4 style="color: rgb(19, 2, 2); margin-top: 50px;">{{ msg4 }} </h4><br>
+        <h4 style="color: rgb(22, 8, 8)">{{ msg5 }} </h4><br>
+        <h4 style="color: rgb(20, 7, 7)">{{ m1 }} </h4><br>
+        <h4 style="color: rgb(7, 3, 3)">{{ msg2 }} </h4><br>
+        <h4 style="color: rgb(26, 16, 16)">{{ msg3 }} </h4><br>
+
+        <form  action="{{url_for('load')}}" method="post" enctype="multipart/form-data">
+            <center>
+                <div>
+                    <label style="color: black;" for="formFile" class="form-label">Upload Your Resume</label>
+                    <input style="background-color: white; width: 600px;" class="form-control" type="file" id="resume" name = "resume" placeholder="Upload Your Resume" required="required" style="width: 353.22222px;margin-left: 668px;">
+                </div><br>
+
+                <div>
+                    <label style="color: black;" for="formFile" class="form-label">Upload the Job Description</label>
+                    <input style="background-color: white; width: 600px;" class="form-control" type="file" id="job_description " name = "job_description" placeholder="Upload the Job Description" required="required" style="width: 353.22222px;margin-left: 668px;">
+                </div><br>
+
+                <div>
+                    <button style="width: 600px; height: 50px;" class="btn btn-success" type="submit">Submit</button>
+                </div>
+            </center>
+        </form><br><br>
+
+        {% if file_names != None %}
+            <main class="row">
+                {% for name in file_names %}
+                <div class="col-2">
+                    <div class="card border-primary">
+                        <a href="/static/resumes/{{name}}" class="btn btn-primary">{{name}}</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </main>
+        {% endif %}
+    </center>
+
+{% endblock %}

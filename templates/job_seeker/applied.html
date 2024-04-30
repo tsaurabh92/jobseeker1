@@ -1,0 +1,74 @@
+{% extends 'index.html' %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn">
+        <a href="#" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h1 class="m-0"><i><img src="/static/img/icon.png"></i>Job Seeker Panel</h1>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="{{url_for('signin1home')}}" class="nav-item nav-link">Home</a>
+                <a href="{{url_for('upload')}}" class="nav-item nav-link">Upload Resume</a>
+                <a href="{{url_for('search')}}" class="nav-item nav-link">Search job</a>
+                <a href="{{url_for('appliedjobs')}}" class="nav-item nav-link active">Applied Jobs</a>
+                <a href="{{url_for('topredictpage')}}" class="nav-item nav-link">Prediction</a>
+                <a href="{{url_for('load')}}" class="nav-item nav-link">Load</a>
+                <a href="{{url_for('j_account')}}" class="nav-item nav-link">Account</a>
+                <a href="{{url_for('index')}}" class="nav-item nav-link">LogOut</a>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+
+    <center>                
+        <div class="section-title">
+            <h2 style="margin-top: 50px;">Applied Jobs</h2>
+        </div>
+
+        {% if data %}
+            <table style="margin-top: 30px; background-color: white;" class="table table-striped table-hover">
+                <thead>
+                    <th><center>Job Name</center></th>
+                    <th><center>Job Description</center></th>
+                    <th><center>Salary</center></th>
+                    <th><center>Experiance</center></th>
+                    <th><center>Skill Needed</center></th>
+                    <th><center>Company Name</center></th>
+                    <th><center>Job Location</center></th>
+                    <th><center>Status</center></th>
+                    <th><center>Action</center></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in data %}
+                    <tr>
+                        <td><center>{{i[1]}}</center></td>
+                        <td><center>{{i[4]}}</center></td>
+                        <td><center>{{i[5]}}</center></td>
+                        <td><center>{{i[6]}}</center></td>
+                        <td><center>{{i[7]}}</center></td>
+                        <td><center>{{i[8]}}</center></td>
+                        <td><center>{{i[9]}}</center></td>
+                        <td><center>{{i[10]}}</center></td>
+                        <td>
+                            <center>
+                                <form action="{{url_for('delete_applied_job')}}" method="post">
+                                    <input type="hidden" name="id" value="{{i[0]}}">
+                                    <button type="submit" class="btn btn-danger">Remove</button>
+                                </form>
+                            </center>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+
+    </center>
+
+{% endblock %}

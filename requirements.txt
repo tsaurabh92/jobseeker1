@@ -1,0 +1,9 @@
+pandas 
+numpy 
+docx2txt
+pyresparser
+en_core_web_sm
+mysql.connector
+# pip install https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.1/en_core_web_sm-2.3.1.tar.gz
+python-docx2
+docx

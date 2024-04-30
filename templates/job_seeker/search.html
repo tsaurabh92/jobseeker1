@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn">
+        <a href="#" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h1 class="m-0"><i><img src="/static/img/icon.png"></i>Job Seeker Panel</h1>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="{{url_for('signin1home')}}" class="nav-item nav-link">Home</a>
+                <a href="{{url_for('upload')}}" class="nav-item nav-link">Upload Resume</a>
+                <a href="{{url_for('search')}}" class="nav-item nav-link active">Search job</a>
+                <a href="{{url_for('appliedjobs')}}" class="nav-item nav-link">Applied Jobs</a>
+                <a href="{{url_for('topredictpage')}}" class="nav-item nav-link">Prediction</a>
+                <a href="{{url_for('load')}}" class="nav-item nav-link">Load</a>
+                <a href="{{url_for('j_account')}}" class="nav-item nav-link">Account</a>
+                <a href="{{url_for('index')}}" class="nav-item nav-link">LogOut</a>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+  <center>
+    <div class="section-title">
+      <h2 style="margin-top: 50px;">Search Job's</h2>
+    </div>
+
+    <form action="/searchback" method="post" role="form">
+        <input style="width: 600px; margin-top: 50px;" type="text" name="role" class="form-control" placeholder="Enter Job Role" required />
+        <button style="width: 600px; margin-top: 20px;" class="btn btn-primary" type="submit">Search Job</button>
+    </form>
+  </center>
+  
+{% endblock %}

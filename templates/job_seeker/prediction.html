@@ -1,0 +1,183 @@
+{% extends 'index.html' %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn">
+        <a href="#" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h1 class="m-0"><i><img src="/static/img/icon.png"></i>Job Seeker Panel</h1>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="{{url_for('signin1home')}}" class="nav-item nav-link">Home</a>
+                <a href="{{url_for('upload')}}" class="nav-item nav-link">Upload Resume</a>
+                <a href="{{url_for('search')}}" class="nav-item nav-link">Search job</a>
+                <a href="{{url_for('appliedjobs')}}" class="nav-item nav-link">Applied Jobs</a>
+                <a href="{{url_for('topredictpage')}}" class="nav-item nav-link active">Prediction</a>
+                <a href="{{url_for('load')}}" class="nav-item nav-link">Load</a>
+                <a href="{{url_for('j_account')}}" class="nav-item nav-link">Account</a>
+                <a href="{{url_for('index')}}" class="nav-item nav-link">LogOut</a>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+
+    <center>  
+        <div class="section-title">
+            <h2 style="margin-top: 50px;">Predict Jobs</h2>
+        </div>
+
+        {% if result %}
+        <div>
+            <b>You are suited for <h6>{{result}}</h6></b>
+        </div>
+        {% endif %}
+
+        <form action="{{url_for('predict')}}" method="post" enctype="multipart/form-data">
+
+            <div class="col-auto">
+                <select class="form-select form-select-lg" class="form-control" name="education" style="height: 50px; width: 600px; margin-top: 20px;" aria-label=".form-select-lg example">
+                    <option hidden>Select The education</option>
+                    <option value="0">Associate</option>
+                    <option value="1">Bachelor</option>
+                    <option value="2">High School</option>
+                    <option value="3">Master</option>
+                    <option value="4">PhD</option>
+                </select>
+            </div>
+
+            <div class="col-auto">
+                <select class="form-select form-select-lg" class="form-control"  name="experience" style="height: 50px; width: 600px; margin-top: 20px;" aria-label=".form-select-lg example">
+                    <option hidden>Select The experience</option>
+                    <option value="0">less than 1 year</option>
+                    <option value="1">1-3 years</option>
+                    <option value="2">3-5 years</option>
+                    <option value="3">5-7 years</option>
+                    <option value="4">7+ years</option>
+                </select>
+            </div>
+
+            <div class="col-auto">
+                <select class="form-select form-select-lg" class="form-control"  name="industry" style="height: 50px; width: 600px; margin-top: 20px;" aria-label=".form-select-lg example">
+                    <option hidden>Select The industry</option>
+                    <option value="0">Education</option>
+                    <option value="1">Finance</option>
+                    <option value="2">Government</option>
+                    <option value="3">Healthcare</option>
+                    <option value="4">Manufacturing</option>
+                    <option value="5">Retail</option>
+                    <option value="6">Technology</option>
+                </select>
+            </div>
+
+            <div class="col-auto">
+                <select class="form-select form-select-lg" class="form-control"  name="skills" style="height: 50px; width: 600px; margin-top: 20px;" aria-label=".form-select-lg example">
+                    <option hidden>Select The skills</option>
+                    <option value="0">Accounting</option>
+                    <option value="1">Customer Service</option>
+                    <option value="2">Data Analysis</option>
+                    <option value="3">Human Resources</option>
+                    <option value="4">Programming</option>
+                    <option value="5">Project Management</option>
+                    <option value="6">Sales & Marketing</option>
+                </select>
+            </div>
+
+            <div class="col-auto">
+                <select class="form-select form-select-lg" class="form-control"  name="jobtitle" style="height: 50px; width: 600px; margin-top: 20px;" aria-label=".form-select-lg example">
+                    <option hidden>Select The jobtitle</option>
+                    <option value="0">Accountant</option>
+                    <option value="1">Customer Support Representative</option>
+                    <option value="2">Data Analyst</option>
+                    <option value="3">HR Specialist</option>
+                    <option value="4">Project Manager</option>
+                    <option value="5">Sales Associate</option>
+                    <option value="6">Software Engineer</option>                         
+                </select>
+            </div>
+            <div class="col-auto">
+                <select class="form-select form-select-lg" class="form-control"  name="location" style="height: 50px; width: 600px; margin-top: 20px;" aria-label=".form-select-lg example">
+                    <option hidden>Select The location</option>
+                    <option value="0">Austin, TX</option>
+                    <option value="1">Boston, MA</option>
+                    <option value="2">New York, NY</option>
+                    <option value="3">San Francisco, CA</option>
+                    <option value="4">Seattle, WA</option>
+                </select>
+            </div>
+
+            <div class="col-auto">
+                <select class="form-select form-select-lg" class="form-control"  name="salary_range" style="height: 50px; width: 600px; margin-top: 20px;" aria-label=".form-select-lg example">
+                    <option hidden>Select The salary_range</option>
+                    <option value="0">100k-120k</option>
+                    <option value="1">120k-140k</option>
+                    <option value="2">40k-60k</option>
+                    <option value="3">60k-80k</option>
+                    <option value="4">80k-100k</option>
+                </select>
+            </div>
+
+            <div class="col-auto">
+                <select class="form-select form-select-lg" class="form-control"  name="work_hours" style="height: 50px; width: 600px; margin-top: 20px;" aria-label=".form-select-lg example">
+                    <option hidden>Select The work_hours</option>
+                    <option value="0">Full-time</option>
+                    <option value="1">Part-time</option>                  
+                </select>
+            </div>
+
+            <div class="col-auto">
+                <select class="form-select form-select-lg" class="form-control"  name="company_size" style="height: 50px; width: 600px; margin-top: 20px;" aria-label=".form-select-lg example">
+                    <option hidden>Select The company_size</option>
+                    <option value="0">2024</option>
+                    <option value="1">1950</option>
+                    <option value="2">1001-5000</option>
+                    <option value="3">201-500</option>
+                    <option value="4">5000+</option>
+                    <option value="5">501-1000</option>
+                    <option value="5">51-200</option>
+                </select>
+            </div>
+            <div class="col-auto">
+                <select class="form-select form-select-lg" class="form-control"  name="job_level" style="height: 50px; width: 600px; margin-top: 20px;" aria-label=".form-select-lg example">
+                    <option hidden>Select The job_level</option>
+                    <option value="0">Entry-Level</option>
+                    <option value="1">Mid-Level</option>
+                    <option value="2">Senior-Level</option>
+                </select>
+            </div>
+
+            <div class="col-auto">
+                <select class="form-select form-select-lg" class="form-control"  name="remote_option" style="height: 50px; width: 600px; margin-top: 20px;" aria-label=".form-select-lg example">
+                    <option hidden>Select The remote_option</option>
+                    <option value="0">On-site</option>
+                    <option value="1">Remote</option>
+                </select>
+            </div>
+
+            <input class="form-control form-control-lg" type="text" name="salary_midpoint"  placeholder="Enter salary midpoint" style="height: 50px; width: 600px; margin-top: 20px;" aria-label=".form-control-lg example">
+
+        
+                <!-- <input type="text" name="education" placeholder="Enter The education"style="height: 50px;width: 200px; color:rgb(124,252,0); border-color:rgb(124,252,0);">
+                <input type="text" name="experience" placeholder="Enter The experience"style="height: 50px;width: 200px; color:rgb(124,252,0); border-color:rgb(124,252,0);">
+                <input type="text" name="industry" placeholder="Enter The industry"style="height: 50px;width: 200px; color:rgb(124,252,0); border-color:rgb(124,252,0);">
+                <input type="text" name="skills" placeholder="Enter The skills"style="height: 50px;width: 200px; color:rgb(124,252,0); border-color:rgb(124,252,0);"><br>
+                <input type="text" name="jobtitle" placeholder="Enter The jobtitle"style="height: 50px;width: 200px; color:rgb(124,252,0); border-color:rgb(124,252,0);">
+                <input type="text" name="location" placeholder="Enter The location"style="height: 50px;width: 200px; color:rgb(124,252,0); border-color:rgb(124,252,0);">
+                <input type="text" name="salary_range" placeholder="Enter The salary_range"style="height: 50px;width: 200px; color:rgb(124,252,0); border-color:rgb(124,252,0);"><br>
+                <input type="text" name="work_hours" placeholder="Enter The work_hours"style="height: 50px;width: 200px; color:rgb(124,252,0); border-color:rgb(124,252,0);">
+                <input type="text" name="company_size" placeholder="Enter The company_size"style="height: 50px;width: 200px; color:rgb(124,252,0); border-color:rgb(124,252,0);">
+                <input type="text" name="job_level" placeholder="Enter The job_level"style="height: 50px;width: 200px; color:rgb(124,252,0); border-color:rgb(124,252,0);"><br>
+                <input type="text" name="remote_option" placeholder="Enter The remote_option"style="height: 50px;width: 200px; color:rgb(124,252,0); border-color:rgb(124,252,0);">
+                <input type="text" name="salary_midpoint" placeholder="Enter The salary_midpoint"style="height: 50px;width: 200px; color:rgb(124,252,0); border-color:rgb(124,252,0);">
+            </center> -->
+            
+
+            <button style="height: 50px; width: 600px; margin-top: 20px;" type="submit" class="btn btn-success">Submit</button>
+        </form><br><br>
+
+    </center>
+
+{% endblock %}

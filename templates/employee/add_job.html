@@ -1,0 +1,108 @@
+{% extends 'index.html' %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn">
+        <a href="#" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h1 class="m-0"><i><img src="/static/img/icon.png"></i>Employee Panel</h1>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="{{url_for('emphome')}}" class="nav-item nav-link">Home</a>
+                <a href="{{url_for('add_job')}}" class="nav-item nav-link active">Add Job</a>
+                <a href="{{url_for('remove_data')}}" class="nav-item nav-link">Job Info Remove</a>
+                <a href="{{url_for('view_applied_jobs')}}" class="nav-item nav-link">Job Seeker's Info</a>
+                <a href="{{url_for('e_account')}}" class="nav-item nav-link">Account</a>
+                <a href="{{url_for('index')}}" class="nav-item nav-link">LogOut</a>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+  <center>
+    <div class="container">
+      <div class="section-title">
+        <h2 style="margin-top: 50px;">Add Job Info</h2>
+      </div>
+
+      <center>
+        <form action="/add_job_back" method="post" role="form" enctype="multipart/form-data">
+          
+          <div class="form-group">
+            <center>
+              <input style="margin-top: 30px; width: 600px; height: 50px;" type="text" name="role" class="form-control" id="role" placeholder="Job Role" required>
+            </center>
+          </div>
+
+          <div class="form-group mt-3">
+            <center>
+              <textarea style="margin-top: 30px; width: 600px; height: 100px;" class="form-control" name="disc" rows="2" placeholder="Job Discription" required></textarea>
+            </center>
+          </div>
+
+          <div class="form-group mt-3">
+            <center>
+              <input style="margin-top: 30px; width: 600px; height: 50px;" type="number" class="form-control" name="salary" placeholder="Salary" required>
+            </center>
+          </div>
+
+          <div class="form-group mt-3">
+            <center>
+              <input style="margin-top: 30px; width: 600px; height: 50px;" type="number" class="form-control" name="exp" placeholder="Experience" required>
+            </center>
+          </div>
+
+          <div class="form-group mt-3">
+            <center>
+              <input style="margin-top: 30px; width: 600px; height: 50px;" type="text" class="form-control" name="skill" placeholder="Skills" required>
+            </center>
+          </div>
+
+          <div class="form-group mt-3">
+            <center>
+              <input style="margin-top: 30px; width: 600px; height: 50px;" type="text" class="form-control" name="qual" placeholder="Qualification"  required>
+            </center>
+          </div>
+
+          <div class="form-group mt-3">
+            <center>
+              <input style="margin-top: 30px; width: 600px; height: 50px;" type="text" name="notf" class="form-control" placeholder="Notification" required />
+            </center>
+          </div>
+
+          <div class="form-group mt-3">
+            <center>
+              <input style="margin-top: 30px; width: 600px; height: 50px;" type="text" name="loc" class="form-control" placeholder="Job Location" required />
+            </center>
+          </div>
+
+          <div class="form-group mt-3">
+            <center>
+              <input style="margin-top: 30px; width: 600px; height: 50px;" type="number" name="pno" class="form-control" placeholder="Mobile Number" pattern="[0-9]{10}" title="It must contain 10 number" required />
+            </center>
+          </div>   
+
+          <div class="form-group mt-3">
+            <center>
+              <input style="margin-top: 30px; width: 600px; height: 50px;" type="email" name="cemail" class="form-control" placeholder="Email" required />
+            </center>
+          </div>
+
+          <center>
+            <button style="margin-top: 30px; width: 600px; height: 50px;"  type="submit" class="btn btn-success">Add Data</button>
+          </center>
+
+          <center>
+            <button style="margin-top: 30px; width: 600px; height: 50px;"  type="reset" class="btn btn-info">Reset</button>
+          </center>
+
+        </form>
+        <br><br>
+      </center>
+    </div>
+  </center>
+
+{% endblock %}

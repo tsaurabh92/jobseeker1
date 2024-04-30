@@ -1,0 +1,84 @@
+{% extends 'index.html' %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn">
+        <a href="#" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h1 class="m-0"><i><img src="/static/img/icon.png"></i>Employee Panel</h1>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="{{url_for('emphome')}}" class="nav-item nav-link">Home</a>
+                <a href="{{url_for('add_job')}}" class="nav-item nav-link">Add Job</a>
+                <a href="{{url_for('remove_data')}}" class="nav-item nav-link">Job Info Remove</a>
+                <a href="{{url_for('view_applied_jobs')}}" class="nav-item nav-link active">Job Seeker's Info</a>
+                <a href="{{url_for('e_account')}}" class="nav-item nav-link">Account</a>
+                <a href="{{url_for('index')}}" class="nav-item nav-link">LogOut</a>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+
+    <center>
+        
+            <div class="container">
+
+                <div class="section-title">
+                    <h2 style="margin-top: 50px;">Candidate Applied For The Job</h2>
+                </div><br>
+
+                {% if data %}
+                    <table style="background-color: white;" class="table table-stripped table-hover">
+                        <thead>
+                            <th>Job Seeker Name</th>
+                            <th>Job Seeker Email</th>
+                            <th>Job Role</th>
+                            <th>Job Description</th>
+                            <th>Salary</th>
+                            <th>Experience</th>
+                            <th>Resume</th>
+                            <th>Actions</th>
+                        </thead>
+                        <tbody>
+                            {% for i in data %}
+                            <tr>
+                                <td>{{i[1]}}</td>
+                                <td>{{i[2]}}</td>
+                                <td>{{i[3]}}</td>
+                                <td>{{i[4]}}</td>
+                                <td>{{i[5]}}</td>
+                                <td>{{i[6]}}</td>
+                                <td><a href="{{url_for('download',s=i[2])}}" class="btn btn-primary">Download</a></td>
+                                <td>
+                                    {% if i[10] == "accepted" %}
+                                        <form action="{{url_for('decline')}}" method="post">
+                                            <input type="hidden" name="id" value="{{i[0]}}">
+                                            <button style="width: 150px;" type="submit" class="btn btn-danger">Remove</button>
+                                        </form>
+
+                                    {% else %}
+
+                                        <form action="{{url_for('send_mail')}}" method="post">
+                                            <input type="hidden" name="id" value="{{i[0]}}">
+                                            <button style="width: 150px;" type="submit" class="btn btn-info">Accept</button>
+                                        </form>
+                                        <form action="{{url_for('decline')}}" method="post">
+                                            <input type="hidden" name="id" value="{{i[0]}}">
+                                            <button style="width: 150px; margin-top: 5px;" type="submit" class="btn btn-danger">Decline</button>
+                                        </form>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
+            </div>
+    </center>
+
+{% endblock %}
+
