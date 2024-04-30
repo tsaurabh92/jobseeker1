@@ -1,7 +1,7 @@
 pandas 
 numpy 
 docx2txt
-en_core_web_sm
+# en_core_web_sm
 pyresparser
 mysql.connector
 docx
